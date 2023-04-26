@@ -28,7 +28,7 @@ public class EmpleadoController {
 
     @GetMapping("/list")
     public String listaEmpleados(Model model){
-        List<Employees> lista = EmpleadoRepository.findAll();
+        List<Employees> lista = empleadoRepository.findAll();
         model.addAttribute("listaE", lista);
         return "/empleados";
     }
