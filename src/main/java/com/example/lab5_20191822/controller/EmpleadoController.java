@@ -60,6 +60,7 @@ public class EmpleadoController {
         }
     }
 
+
     @PostMapping("/buscar")
     public String buscarEmpleadoPorNombre(@RequestParam("textoBuscar") String textoBuscar,
                                                Model model) {
@@ -70,6 +71,19 @@ public class EmpleadoController {
         model.addAttribute("textoBuscado", textoBuscar);
 
         return "/empleados";
+
+    @PostMapping("/guardar")
+    public String guardarEmpleado(@RequestParam("employeeId") Integer employeeId,
+                                  @RequestParam("firstName") String firstName,
+                                  @RequestParam("lastName") String lastName,
+                                  @RequestParam("job") String job,
+                                  @RequestParam("department") Integer department,
+                                  @RequestParam("department.locations") Integer city,
+                                  RedirectAttributes attr) {
+        empleadoRepository.guardar(firstName, lastName , job , department, city, employeeId);
+        attr.addFlashAttribute("msg","Empleado actualizado exitosamente");
+        return "redirect:/empleados/lista";
+
     }
 
 
