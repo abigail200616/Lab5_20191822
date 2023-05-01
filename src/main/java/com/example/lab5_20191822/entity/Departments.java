@@ -17,8 +17,15 @@ public class Departments {
     @Column(name = "manager_id")
     private Integer managerId;
     @ManyToOne
-    @Column(name = "location_id")
-    private Locations locationId;
+    @JoinColumn(name = "location_id")
+    private Locations locations;
+
+    public Locations getLocations(){
+        return locations;
+    }
+    public void setLocations( Locations locations){
+        this.locations = locations;
+    }
 
     public int getDepartmentId() {
         return departmentId;
@@ -44,17 +51,4 @@ public class Departments {
         this.managerId = managerId;
     }
 
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Departments that = (Departments) o;
-        return departmentId == that.departmentId && Objects.equals(departmentName, that.departmentName) && Objects.equals(managerId, that.managerId) && Objects.equals(locationId, that.locationId);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(departmentId, departmentName, managerId, locationId);
-    }
 }

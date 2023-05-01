@@ -7,6 +7,7 @@ import java.sql.Timestamp;
 import java.util.Objects;
 
 @Entity
+@Table(name = "employees", schema = "hr", catalog = "")
 public class Employees {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
@@ -32,23 +33,39 @@ public class Employees {
     private Timestamp hireDate;
 
     @ManyToOne
-    @Column(name = "job_id")
-    private Jobs jobId;
+    @JoinColumn(name = "job_id")
+    private Jobs job;
     @Basic
     @Column(name = "salary")
     private BigDecimal salary;
     @Basic
     @Column(name = "commission_pct")
-    private BigDecimal commissionPct;
+    private Double commissionPct;
     @Basic
     @Column(name = "manager_id")
     private Integer managerId;
     @ManyToOne
-    @Column(name = "department_id")
-    private Departments departmentId;
+    @JoinColumn(name = "department_id")
+    private Departments department;
     @Basic
     @Column(name = "enabled")
     private Integer enabled;
+
+
+    public Jobs getJob(){
+        return job;
+    }
+    public void setJob(Jobs job){
+        this.job = job;
+    }
+
+    public Departments getDepartment(){
+        return department;
+    }
+
+    public void setDepartment(Departments department){
+        this.department= department;
+    }
 
     public int getEmployeeId() {
         return employeeId;
@@ -115,11 +132,11 @@ public class Employees {
         this.salary = salary;
     }
 
-    public BigDecimal getCommissionPct() {
+    public Double getCommissionPct() {
         return commissionPct;
     }
 
-    public void setCommissionPct(BigDecimal commissionPct) {
+    public void setCommissionPct(Double commissionPct) {
         this.commissionPct = commissionPct;
     }
 
@@ -139,16 +156,5 @@ public class Employees {
         this.enabled = enabled;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Employees employees = (Employees) o;
-        return employeeId == employees.employeeId && Objects.equals(firstName, employees.firstName) && Objects.equals(lastName, employees.lastName) && Objects.equals(email, employees.email) && Objects.equals(password, employees.password) && Objects.equals(phoneNumber, employees.phoneNumber) && Objects.equals(hireDate, employees.hireDate) && Objects.equals(jobId, employees.jobId) && Objects.equals(salary, employees.salary) && Objects.equals(commissionPct, employees.commissionPct) && Objects.equals(managerId, employees.managerId) && Objects.equals(departmentId, employees.departmentId) && Objects.equals(enabled, employees.enabled);
-    }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(employeeId, firstName, lastName, email, password, phoneNumber, hireDate, jobId, salary, commissionPct, managerId, departmentId, enabled);
-    }
 }

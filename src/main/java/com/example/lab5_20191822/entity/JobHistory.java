@@ -24,9 +24,9 @@ public class JobHistory {
     @Basic
     @Column(name = "end_date")
     private Timestamp endDate;
-    @Basic
-    @Column(name = "job_id")
-    private String jobId;
+    @ManyToOne
+    @JoinColumn(name = "job_id")
+    private Jobs jobId;
     @Basic
     @Column(name = "department_id")
     private Integer departmentId;
@@ -63,11 +63,13 @@ public class JobHistory {
         this.endDate = endDate;
     }
 
-    public String getJobId() {
+    public Jobs getJobId() {
+
         return jobId;
     }
 
-    public void setJobId(String jobId) {
+    public void setJobId(Jobs jobId) {
+
         this.jobId = jobId;
     }
 
@@ -79,16 +81,4 @@ public class JobHistory {
         this.departmentId = departmentId;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        JobHistory that = (JobHistory) o;
-        return jobHistoryId == that.jobHistoryId && employeeId == that.employeeId && Objects.equals(startDate, that.startDate) && Objects.equals(endDate, that.endDate) && Objects.equals(jobId, that.jobId) && Objects.equals(departmentId, that.departmentId);
     }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(jobHistoryId, employeeId, startDate, endDate, jobId, departmentId);
-    }
-}
