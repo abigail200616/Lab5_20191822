@@ -10,23 +10,24 @@
 </head>
 <body>
 <!-- Botones-->
+<div  th:fragment="menu">
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="navbar-collapse collapse" id="navbarNav">
     <!-- mx auto para centrar-->
     <ul class="navbar-nav mx-auto ">
       <li class="nav-item">
-        <a class="btn btn-outline-dark" th:href="@{'/empleados/lista'}" >Empleados</a>
+        <a class="btn btn-dark" th:href="@{'/empleados/lista'}" >Empleados</a>
       </li>
       <li class="nav-item  active">
-        <a class="btn btn-outline-dark" th:href="@{'/historial'}">Historial</a>
+        <a class="btn btn-dark" th:href="@{'/inicio'}">Historial</a>
       </li>
       <li class="nav-item">
-        <a class="btn btn-outline-dark" th:href="@{'/reportes'}">Reportes</a>
+        <a class="btn btn-dark" th:href="@{'/empleados/menu'}">Reportes</a>
       </li>
     </ul>
   </div>
 </nav>
-
+</div>
 </body>
 
 </html>

@@ -1,8 +1,8 @@
 package com.example.lab5_20191822.repository;
 
 import com.example.lab5_20191822.dto.EmployeesDto;
+import com.example.lab5_20191822.dto.ReportesDto;
 import com.example.lab5_20191822.entity.Employees;
-import com.example.lab5_20191822.entity.Jobs;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -50,7 +50,11 @@ public interface EmpleadoRepository extends JpaRepository<Employees, Integer> {
                       Integer manager, Integer department);
 
 
-
+    @Query(nativeQuery = true, value="select job_title as jobTitle, max_salary as salarioMax, min_salary as salarioMin, " +
+            "sum(e.salary) as salarioTotal,round((sum(e.salary)/count(e.salary)),2) as salarioProm from jobs j \n" +
+            "inner join employees e on j.job_id=e.job_id\n" +
+            "group by j.job_id")
+    List<ReportesDto> listarReportes();
 
 
 

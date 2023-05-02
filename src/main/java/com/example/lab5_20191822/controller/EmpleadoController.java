@@ -2,6 +2,7 @@ package com.example.lab5_20191822.controller;
 
 
 import com.example.lab5_20191822.dto.EmployeesDto;
+import com.example.lab5_20191822.dto.ReportesDto;
 import com.example.lab5_20191822.entity.Employees;
 import com.example.lab5_20191822.repository.DepartmentsRepository;
 import com.example.lab5_20191822.repository.EmpleadoRepository;
@@ -122,7 +123,22 @@ public class EmpleadoController {
         return "redirect:/empleados/lista";
     }
 
+    @GetMapping("menu")
+    public String menuReportes() {
+        return "reportes/menuReportes";
+    }
 
+    @GetMapping(value = {"/listaReportes", ""})
+    public String listaReportes(Model model){
+        List<ReportesDto> lista = empleadoRepository.listarReportes();
+        model.addAttribute("listaR", lista);
+        return "reportes/salario";
+    }
+
+    @GetMapping("tentativa")
+    public String tentativaReportes(){
+        return "reportes/tentativa";
+    }
 
 
 
