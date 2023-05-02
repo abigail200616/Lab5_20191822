@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
   <title>Nuevo</title>
@@ -45,26 +45,10 @@
       <div class="mb-3">
         <label for="job" class="form-label">Puesto</label>
         <select name="job" id="job" class="form-select">
-          <option value="AC_ACCOUNT">Public Accountant</option>
-          <option value="AC_MGR">Accounting Manager</option>
-          <option value="AD_ASST">Administration Assistant</option>
-          <option value="AD_PRES">President</option>
-          <option value="AD_VP">Administration Vice President</option>
-          <option value="FI_ACCOUNT">Accountant</option>
-          <option value="FI_MGR">Finance Manager</option>
-          <option value="HR_REP">Human Resources Representative</option>
-          <option value="IT_PROG">Programmer</option>
-          <option value="MK_MAN">Marketing Manager</option>
-          <option value="MK_REP">Marketing Representative</option>
-          <option value="PR_REP">Public Relations Representative</option>
-          <option value="PU_CLERK">Purchasing Clerk</option>
-          <option value="PU_MAN">Purchasing Manager</option>
-          <option value="SA_MAN">Sales Manager</option>
-          <option value="SA_REP">Sales Representative</option>
-          <option value="SH_CLERK">Shipping Clerk</option>
-          <option value="ST_CLERK">Stock Clerk</option>
-          <option value="ST_MAN">Stock Manager</option>
-          <option value="WS_ADMIN">Web System Administrator</option>
+          <option th:each="puesto : ${listaPuesto}"
+                  th:value="${puesto.jobId}"
+                  th:text="${puesto.jobTitle}">
+          </option>
         </select>
       </div>
       <div class="mb-3">
@@ -74,144 +58,22 @@
       <div class="mb-3">
         <label for="manager" class="form-label">Jefe</label>
         <select name="manager" id="manager" class="form-select">
-          <option value="100">Steven King</option>
-          <option value="100">Neena Kochhar</option>
-          <option value="100">Lex De Haan</option>
-          <option value="103">Alexander Hunold</option>
-          <option value="103">David Austin</option>
-          <option value="">Valli Pataballa</option>
-          <option value="103">Diana Lorentz</option>
-          <option value="108">Nancy Greenberg</option>
-          <option value="108">Daniel Faviet</option>
-          <option value="108">Ismael Sciarra</option>
-          <option value="108">Jose Manuel Urman</option>
-          <option value="108">Luis Popp</option>
-          <option value="114">Den Raphaely</option>
-          <option value="114">Alexander Khoo</option>
-          <option value="114">Shelli Baida</option>
-          <option value="114">Sigal Tobias</option>
-          <option value="114">Guy Himuro</option>
-          <option value="114">Karen Colmenares</option>
-          <option value="121">Matthew Weiss</option>
-          <option value="121">Adam Fripp</option>
-          <option value="121">Payam Kaufling</option>
-          <option value="121">Shanta Vollman</option>
-          <option value="121">Kevin Mourgos</option>
-          <option value="121">Julia Nayer</option>
-          <option value="121">Irene Mikkilineni</option>
-          <option value="121">James Landry</option>
-          <option value="121">Steven Markle</option>
-          <option value="121">Laura Bissot</option>
-          <option value="121">Mozhe Atkinson</option>
-          <option value="121">James Marlow</option>
-          <option value="121">TJ Olson</option>
-          <option value="121">Jason Mallin</option>
-          <option value="121">Michael Rogers</option>
-          <option value="121">Ki Gee</option>
-          <option value="121">Hazel Philtanker</option>
-          <option value="121">Renske Ladwig</option>
-          <option value="121">Stephen Stiles</option>
-          <option value="121">John Seo</option>
-          <option value="121">Joshua Patel</option>
-          <option value="121">Trenna Rajs</option>
-          <option value="121">Curtis Davies</option>
-          <option value="121">Randall Matos</option>
-          <option value="121">Peter Vargas</option>
-          <option value="145">John Russell</option>
-          <option value="145">Karen Partners</option>
-          <option value="145">Alberto Errazuriz</option>
-          <option value="145">Gerald Cambrault</option>
-          <option value="145">Eleni Zlotkey</option>
-          <option value="145">Peter Tucker</option>
-          <option value="145">David Bernstein</option>
-          <option value="145">Peter Hall</option>
-          <option value="145">Christopher Olsen</option>
-          <option value="145">Nanette Cambrault</option>
-          <option value="145">Oliver Tuvault</option>
-          <option value="145">Patrick Sully</option>
-          <option value="145">Allan McEwen</option>
-          <option value="145">Lindsey Smith</option>
-          <option value="145">Louise Doran</option>
-          <option value="145">Sarath Sewall</option>
-          <option value="145">Clara Vishney</option>
-          <option value="145">Danielle Greene</option>
-          <option value="145">Mattea Marvins</option>
-          <option value="145">David Lee</option>
-          <option value="145">Sundar Ande</option>
-          <option value="145">Amit Banda</option>
-          <option value="145">Lisa Ozer</option>
-          <option value="145">Harrison Bloom</option>
-          <option value="145">Tayler Fox</option>
-          <option value="145">William Smith</option>
-          <option value="145">Elizabeth Bates</option>
-          <option value="145">Sundita Kumar</option>
-          <option value="145">Ellen Abel</option>
-          <option value="145">Alyssa Hutton</option>
-          <option value="145">Jonathon Taylor</option>
-          <option value="145">Jack Livingston</option>
-          <option value="145">Kimberely Grant</option>
-          <option value="145">Charles Johnson</option>
-          <option value="121">Winston Taylor</option>
-          <option value="121">Jean Fleaur</option>
-          <option value="121">Martha Sullivan</option>
-          <option value="121">Girard Geoni</option>
-          <option value="121">Nandita Sarchand</option>
-          <option value="121">Alexis Bull</option>
-          <option value="121">Julia Dellinger</option>
-          <option value="121">Anthony Cabrio</option>
-          <option value="121">Kelly Chung</option>
-          <option value="121">Jennifer Dilly</option>
-          <option value="121">Timothy Gates</option>
-          <option value="121">Randall Perkins</option>
-          <option value="121">Sarah Bell</option>
-          <option value="121">Britney Everett</option>
-          <option value="121">Samuel McCain</option>
-          <option value="121">Vance Jones</option>
-          <option value="121">Alana Walsh</option>
-          <option value="121">Kevin Feeney</option>
-          <option value="121">Donald OConnell</option>
-          <option value="121">Douglas Grant</option>
-          <option value="200">Jennifer Whalen</option>
-          <option value="201">Michael Hartstein</option>
-          <option value="201">Pat Fay</option>
-          <option value="203">Susan Mavris</option>
-          <option value="204">Hermann Baer</option>
-          <option value="205">Shelley Higgins</option>
+          <option th:each="jefe : ${listaJefes}"
+                  th:value="${jefe.employeeId}"
+                  th:text="|${jefe.firstName} ${jefe.lastName}|">
+          </option>
         </select>
       </div>
       <div class="mb-3">
         <label for="department" class="form-label">Departamento</label>
         <select name="department" id="department" class="form-select">
-          <option value="10">Administration</option>
-          <option value="20">Marketing</option>
-          <option value="30">Purchasing</option>
-          <option value="40">Human Resources</option>
-          <option value="50">Shipping</option>
-          <option value="60">IT</option>
-          <option value="70">Public Relations</option>
-          <option value="80">Sales</option>
-          <option value="90">Executive</option>
-          <option value="100">Finance</option>
-          <option value="110">Accounting</option>
-          <option value="120">Treasury</option>
-          <option value="130">Corporate Tax</option>
-          <option value="140">Control And Credit</option>
-          <option value="150">Shareholder Services</option>
-          <option value="160">Benefits</option>
-          <option value="170">Manufacturing</option>
-          <option value="180">Construction</option>
-          <option value="190">Contracting</option>
-          <option value="200">Operations</option>
-          <option value="210">IT Support</option>
-          <option value="220">NOC</option>
-          <option value="230">IT Helpdesk</option>
-          <option value="240">Government Sales</option>
-          <option value="250">Retail Sales</option>
-          <option value="260">Recruiting</option>
-          <option value="270">Payroll</option>
+          <option th:each="depart : ${listaDepart}"
+                  th:value="${depart.departmentId}"
+                  th:text="${depart.departmentName}">
+          </option>
         </select>
       </div>
-      <a href="/empleados/lista" class="btn btn-danger">Cancelar</a>
+      <a th:href="@{/empleados/lista}" class="btn btn-danger">Cancelar</a>
       <button type="submit" class="btn btn-primary">Registrar</button>
     </form>
   </div>
